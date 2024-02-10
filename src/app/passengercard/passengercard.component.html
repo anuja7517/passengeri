@@ -1,0 +1,38 @@
+<div class="card">
+  
+    <div class="card-headerd-flex text-capita">
+        
+        <span class="symbol mr-2"[ngClass]="{
+            'green':passengercard.checkedIn,
+            'red' : !passengercard.checkedIn
+        }">
+    
+        </span>
+        <span>
+
+            <input type="text" [value]="passengercard.fullname" id="editname" [disabled]="!isEditable"
+                class="form-control" #updatedname>
+        </span>
+
+               
+    </div>
+  
+    <div class="card-body">
+        <strong>checkedIn</strong>
+       <p>{{passengercard.checkInDate?(passengercard.checkInDate | date): "not checkedIn"}}</p>
+
+        <strong>children</strong>
+        <p>{{passengercard.children? passengercard.children.length:0}}</p>
+       
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-between ">
+            <button class="btn btn-info" (click)="onedit()" [ngClass]="
+            { 'd-none': isEditable}">Edit</button>
+            <button class="btn btn-success" (click)="onupdate()" [ngClass]="
+            { 'd-none': !isEditable}">Update</button>
+            <button class="btn btn-danger" (click)="ondelate()">Delete</button>
+        </div>
+    </div>
+</div>
+
